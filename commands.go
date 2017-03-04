@@ -15,7 +15,7 @@ func respond(res http.ResponseWriter, obj interface{}) {
 
 func handleStart(res http.ResponseWriter, req *http.Request) {
 	//data, err := NewGameStartRequest(req)
-	_, _ := NewGameStartRequest(req)
+	_, err := NewGameStartRequest(req)
 	// if err != nil {
 	// 	respond(res, GameStartResponse{
 	// 		Taunt:          toStringPointer("Me eat brains..."),
@@ -32,20 +32,22 @@ func handleStart(res http.ResponseWriter, req *http.Request) {
 	if req.TLS != nil {
 		scheme = "https"
 	}
-	respond(res, GameStartResponse{
-		Taunt:          toStringPointer("Me eat brains..."),
-		Color:          "#f26000",
-		Name:           "ZombieSnake", //fmt.Sprintf("%v (%vx%v)", data.GameId, data.Width, data.Height),
-		HeadUrl:        toStringPointer(fmt.Sprintf("%v://%v/head.png", scheme, req.Host)),
-		HeadType:       "pixel",
-		TailType:       "tail_type",
-		SecondaryColor: "#ffffff",
-	})
+	if err != nil {
+		respond(res, GameStartResponse{
+			Taunt:          toStringPointer("Me eat brains..."),
+			Color:          "#f26000",
+			Name:           "ZombieSnake", //fmt.Sprintf("%v (%vx%v)", data.GameId, data.Width, data.Height),
+			HeadUrl:        toStringPointer(fmt.Sprintf("%v://%v/head.png", scheme, req.Host)),
+			HeadType:       "pixel",
+			TailType:       "tail_type",
+			SecondaryColor: "#ffffff",
+		})
+	}
 }
 
 func handleMove(res http.ResponseWriter, req *http.Request) {
 	//data, err := NewMoveRequest(req)
-	_, _ := NewMoveRequest(req)
+	_, err := NewMoveRequest(req)
 	// if err != nil {
 	// 	respond(res, MoveResponse{
 	// 		Move:  "up",
@@ -61,10 +63,12 @@ func handleMove(res http.ResponseWriter, req *http.Request) {
 		"right",
 	}
 
-	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	if err != nil {
+		r := rand.New(rand.NewSource(time.Now().UnixNano()))
 
-	respond(res, MoveResponse{
-		Move:  directions[r.Intn(4)],
-		Taunt: toStringPointer("You can't hide from me..."),
-	})
+		respond(res, MoveResponse{
+			Move:  directions[r.Intn(4)],
+			Taunt: toStringPointer("You can't hide from me..."),
+		})
+	}
 }

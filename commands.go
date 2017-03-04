@@ -14,13 +14,17 @@ func respond(res http.ResponseWriter, obj interface{}) {
 }
 
 func handleStart(res http.ResponseWriter, req *http.Request) {
-	data, err := NewGameStartRequest(req)
+	//data, err := NewGameStartRequest(req)
+	_, err := NewGameStartRequest(req)
 	if err != nil {
 		respond(res, GameStartResponse{
-			Taunt:   toStringPointer("battlesnake-go!"),
-			Color:   "#00FF00",
-			Name:    fmt.Sprintf("%v (%vx%v)", data.GameId, data.Width, data.Height),
-			HeadUrl: toStringPointer(fmt.Sprintf("%v://%v/static/head.png")),
+			Taunt:          toStringPointer("Me eat brains..."),
+			Color:          "#f26000",
+			Name:           "ZombieSnake", //fmt.Sprintf("%v (%vx%v)", data.GameId, data.Width, data.Height),
+			HeadUrl:        toStringPointer(fmt.Sprintf("%v://%v/static/head.png")),
+			HeadType:       "pixel",
+			TailType:       "tail_type",
+			SecondaryColor: "#ffffff",
 		})
 	}
 
@@ -29,19 +33,23 @@ func handleStart(res http.ResponseWriter, req *http.Request) {
 		scheme = "https"
 	}
 	respond(res, GameStartResponse{
-		Taunt:   toStringPointer("battlesnake-go!"),
-		Color:   "#00FF00",
-		Name:    fmt.Sprintf("%v (%vx%v)", data.GameId, data.Width, data.Height),
-		HeadUrl: toStringPointer(fmt.Sprintf("%v://%v/static/head.png", scheme, req.Host)),
+		Taunt:          toStringPointer("Me eat brains..."),
+		Color:          "#f26000",
+		Name:           "ZombieSnake", //fmt.Sprintf("%v (%vx%v)", data.GameId, data.Width, data.Height),
+		HeadUrl:        toStringPointer(fmt.Sprintf("%v://%v/static/head.png", scheme, req.Host)),
+		HeadType:       "pixel",
+		TailType:       "tail_type",
+		SecondaryColor: "#ffffff",
 	})
 }
 
 func handleMove(res http.ResponseWriter, req *http.Request) {
-	data, err := NewMoveRequest(req)
+	//data, err := NewMoveRequest(req)
+	_, err := NewMoveRequest(req)
 	if err != nil {
 		respond(res, MoveResponse{
 			Move:  "up",
-			Taunt: toStringPointer("can't parse this!"),
+			Taunt: toStringPointer("You can't hide from me..."),
 		})
 		return
 	}
@@ -57,6 +65,6 @@ func handleMove(res http.ResponseWriter, req *http.Request) {
 
 	respond(res, MoveResponse{
 		Move:  directions[r.Intn(4)],
-		Taunt: &data.You,
+		Taunt: toStringPointer("You can't hide from me..."),
 	})
 }

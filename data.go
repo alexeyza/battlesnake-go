@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"net/http"
-	"strings"
+	//	"strings"
 )
 
 type GameStartRequest struct {
@@ -14,10 +14,13 @@ type GameStartRequest struct {
 }
 
 type GameStartResponse struct {
-	Color   string  `json:"color"`
-	HeadUrl *string `json:"head_url,omitempty"`
-	Name    string  `json:"name"`
-	Taunt   *string `json:"taunt,omitempty"`
+	Color          string  `json:"color"`
+	HeadUrl        *string `json:"head_url,omitempty"`
+	Name           string  `json:"name"`
+	Taunt          *string `json:"taunt,omitempty"`
+	HeadType       string  `json:"head_type"`
+	TailType       string  `json:"tail_type"`
+	SecondaryColor string  `json:"secondary_color"`
 }
 
 type MoveRequest struct {

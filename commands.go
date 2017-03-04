@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
+	_ "fmt"
 	"math/rand"
 	"net/http"
 	"time"
@@ -28,19 +28,19 @@ func handleStart(res http.ResponseWriter, req *http.Request) {
 	// 	})
 	// }
 
-	scheme := "http"
-	if req.TLS != nil {
-		scheme = "https"
-	}
+	// scheme := "http"
+	// if req.TLS != nil {
+	// 	scheme = "https"
+	// }
 	if err != nil {
 		respond(res, GameStartResponse{
-			Taunt:          toStringPointer("Me eat brains..."),
-			Color:          "#f26000",
-			Name:           "ZombieSnake", //fmt.Sprintf("%v (%vx%v)", data.GameId, data.Width, data.Height),
-			HeadUrl:        toStringPointer(fmt.Sprintf("%v://%v/head.png", scheme, req.Host)),
-			HeadType:       "pixel",
-			TailType:       "tail_type",
-			SecondaryColor: "#ffffff",
+			// Taunt:          toStringPointer("Me eat brains..."),
+			// Color:          "#f26000",
+			Name: "ZombieSnake", //fmt.Sprintf("%v (%vx%v)", data.GameId, data.Width, data.Height),
+			// HeadUrl:        toStringPointer(fmt.Sprintf("%v://%v/head.png", scheme, req.Host)),
+			// HeadType:       "pixel",
+			// TailType:       "tail_type",
+			// SecondaryColor: "#ffffff",
 		})
 	}
 }

@@ -1,13 +1,13 @@
 {
   "name": "battlesnake-go",
-  "description": "A simple BattleSnake AI written in Go..",
+  "description": "A poor attempt at Battlesnake",
   "keywords": [
     "battlesnake",
-    "sendwithus"
+    "alexeyza"
   ],
-  "website": "http://battlesnake.io",
-  "repository": "https://github.com/sendwithus/battlesnake-go",
+  "website": "http://alexeyza.com",
+  "repository": "https://github.com/alexeyza/battlesnake-go",
   "env": {
-    "BUILDPACK_URL": "https://github.com/kr/heroku-buildpack-go"
+    "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-go"
   }
 }

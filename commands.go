@@ -15,7 +15,7 @@ func respond(res http.ResponseWriter, obj interface{}) {
 
 func handleStart(res http.ResponseWriter, req *http.Request) {
 	//data, err := NewGameStartRequest(req)
-	_, err := NewGameStartRequest(req)
+	_, _ := NewGameStartRequest(req)
 	// if err != nil {
 	// 	respond(res, GameStartResponse{
 	// 		Taunt:          toStringPointer("Me eat brains..."),
@@ -45,7 +45,7 @@ func handleStart(res http.ResponseWriter, req *http.Request) {
 
 func handleMove(res http.ResponseWriter, req *http.Request) {
 	//data, err := NewMoveRequest(req)
-	_, err := NewMoveRequest(req)
+	_, _ := NewMoveRequest(req)
 	// if err != nil {
 	// 	respond(res, MoveResponse{
 	// 		Move:  "up",

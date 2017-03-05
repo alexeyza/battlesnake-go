@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	//"fmt"
+	//	"fmt"
 	"math/rand"
 	"net/http"
 	"time"
@@ -16,7 +16,7 @@ func respond(res http.ResponseWriter, obj interface{}) {
 type H map[string]interface{}
 
 func handleStart(res http.ResponseWriter, req *http.Request) {
-	data := H{
+	output_data := H{
 		"name":            "ZombieSnake",
 		"color":           "#009b19",
 		"taunt":           "bhaaaa....",
@@ -26,7 +26,7 @@ func handleStart(res http.ResponseWriter, req *http.Request) {
 		"secondary_color": "#f26000",
 	}
 
-	json.NewEncoder(res).Encode(data)
+	json.NewEncoder(res).Encode(output_data)
 
 	//data, err := NewGameStartRequest(req)
 	// _, err := NewGameStartRequest(req)
@@ -58,7 +58,7 @@ func handleStart(res http.ResponseWriter, req *http.Request) {
 }
 
 func handleMove(res http.ResponseWriter, req *http.Request) {
-	//data, err := NewMoveRequest(req)
+	data, _ := NewMoveRequest(req)
 	// _, err := NewMoveRequest(req)
 	// if err != nil {
 	// 	respond(res, MoveResponse{
@@ -68,6 +68,15 @@ func handleMove(res http.ResponseWriter, req *http.Request) {
 	// 	return
 	// }
 
+	//var board = make([]int, data.Height*data.Width)
+	var head Point
+	for _, snake := range data.Snakes {
+		if data.You == snake.Id {
+			head = snake.Coords[0]
+		}
+	}
+	//my_id := data.You
+
 	directions := []string{
 		"up",
 		"down",
@@ -76,9 +85,56 @@ func handleMove(res http.ResponseWriter, req *http.Request) {
 	}
 
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	var move_direction string
 
+	var my_snake Snake
+	for _, snake := range data.Snakes {
+		if data.You == snake.Id {
+			my_snake = snake
+		}
+	}
+
+	var foundpath bool
+	for foundpath = false; foundpath == false; {
+		possible_direction := r.Intn(4)
+		switch possible_direction {
+		case 0:
+			if head.Y > 1 && my_snake.Coords[1].Y != head.Y-1 {
+				move_direction = directions[0]
+				foundpath = true
+			}
+		case 1:
+			if head.Y < data.Height-2 && my_snake.Coords[1].Y != head.Y+1 {
+				move_direction = directions[1]
+				foundpath = true
+			}
+		case 2:
+			if head.X > 1 && my_snake.Coords[1].X != head.X-1 {
+				move_direction = directions[2]
+				foundpath = true
+			}
+		default:
+			if head.X < data.Height-2 && my_snake.Coords[1].X != head.X+1 {
+				move_direction = directions[3]
+				foundpath = true
+			}
+		}
+	}
+	// if head.X < data.Width-1 {
+	// 	move_direction = directions[3]
+	// } else {
+	// 	if head.Y < data.Height-1 {
+	// 		move_direction = directions[1]
+	// 	} else {
+	// 		if head.X > 0 {
+	// 			move_direction = directions[2]
+	// 		}
+	// 	}
+	// }
 	respond(res, MoveResponse{
-		Move:  directions[r.Intn(4)],
+		//Move:  directions[r.Intn(4)],
+		Move:  move_direction,
 		Taunt: toStringPointer("Psss...psss..."),
 	})
+
 }

@@ -22,7 +22,7 @@ func handleStart(res http.ResponseWriter, req *http.Request) {
 		"taunt":           "bhaaaa....",
 		"head_type":       "sand-worm",
 		"tail_type":       "fat-rattle",
-		"head_url":        "http://10.189.212.94:9000/head.jpg",
+		"head_url":        "https://zombiesnake.herokuapp.com/head.jpg",
 		"secondary_color": "#f26000",
 	}
 

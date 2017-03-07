@@ -1,8 +1,11 @@
-# Battlesnake-go
+# BattleSnake-go
 
-This is my first attempt at the [battlesnake competition](http://battlesnake.io) which I attended in 2017. The battlesnake is written in Go and follows the game server [API documentation](https://stembolthq.github.io/battle_snake/). 
+This is my first attempt at the [BattleSnake competition](http://battlesnake.io) which I attended in 2017. I chose to write my BattleSnake in Go. 
 
-### Running the AI locally
+The game server API documentation can be found at [https://stembolthq.github.io/battle_snake/](https://stembolthq.github.io/battle_snake/). 
+
+
+### Running the BattleSnake locally
 
 1) [Fork this repo](https://github.com/alexeyza/battlesnake-go/fork).
 
@@ -117,6 +120,7 @@ Example move request:
 :ok
 ```
 
+
 ### Deploying to Heroku
 
 1. Create a new Go Heroku app using Go buildpack.
@@ -145,6 +149,28 @@ Or go directly via http://APP_NAME.herokuapp.com
 heroku logs --tail
 ```
 
-### Questions?
 
-[Email](mailto:battlesnake@sendwithus.com), [Twitter](http://twitter.com/send_with_us)
+### Running Your Own Game Server (With Docker)
+
+1. Install Docker.
+
+2. Install the game server (this should also run the game server for you).
+```
+docker run -it -p 4000:4000 stembolt/battle_snake
+```
+
+To stop/start the game server use:
+```
+docker start vibrant_kowalevski
+
+docker stop vibrant_kowalevski
+```
+Where `vibrant_kowalevski` is the name of my local game server.
+
+3. Visit http://localhost:4000
+NOTE: Docker runs on a virtual LAN so when you add a snake to the game you cannot use `http://localhost:9000`, use your internal IP instead (also remove trailing `/`).
+
+
+### Acknowledgments
+
+My code was forked from the [starter code provided by SendWithUs](https://github.com/sendwithus/battlesnake-go). Also, [SendWithUs](https://www.sendwithus.com/) and [Stembolt](https://stembolt.com/) have put much effort into a very awesome game server for the competition.

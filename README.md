@@ -4,6 +4,8 @@ This is my first attempt at the [BattleSnake programming competition](http://bat
 
 The game server API documentation can be found at [https://stembolthq.github.io/battle_snake/](https://stembolthq.github.io/battle_snake/). 
 
+![Battlesnake game example](static/snakes.gif "BattleSnake game")
+
 
 ### Running the BattleSnake locally
 

@@ -1,6 +1,6 @@
 # BattleSnake-go
 
-This is my first attempt at the [BattleSnake competition](http://battlesnake.io) which I attended in 2017. I chose to write my BattleSnake in Go. 
+This is my first attempt at the [BattleSnake programming competition](http://battlesnake.io) which I attended in 2017. I chose to write my BattleSnake in Go. 
 
 The game server API documentation can be found at [https://stembolthq.github.io/battle_snake/](https://stembolthq.github.io/battle_snake/). 
 
@@ -10,26 +10,26 @@ The game server API documentation can be found at [https://stembolthq.github.io/
 1) [Fork this repo](https://github.com/alexeyza/battlesnake-go/fork).
 
 2) Clone repo to your development environment:
-```
+``` bash
 git clone git@github.com:USERNAME/battlesnake-go.git $GOPATH/github.com/USERNAME/battlesnake-go
 cd $GOPATH/github.com/USERNAME/battlesnake-go
 ```
 
 3) Compile the battlesnake-go server.
-```
+``` bash
 go build
 ```
 This will create a `battlesnake-go` executable.
 
 4) Run the server.
-```
+``` bash
 ./battlesnake-go
 ```
 
 5) Test the client in your browser: [http://127.0.0.1:9000](http://127.0.0.1:9000). I recommend using [Postman](https://www.getpostman.com/) or [Insomnia](https://insomnia.rest/).
 
 Example start game request:
-```
+``` json
 {
   "width": 20,
   "height": 20,
@@ -39,7 +39,7 @@ Example start game request:
 ```
 
 Example move request:
-```
+``` json
 {
   "you": "2c4d4d70-8cca-48e0-ac9d-03ecafca0c98",
   "width": 2,
@@ -124,28 +124,28 @@ Example move request:
 ### Deploying to Heroku
 
 1. Create a new Go Heroku app using Go buildpack.
-```
+``` bash
 heroku create [APP_NAME]
 ```
 
 2. Add a buildpack for Go.
-```
+``` bash
 heroku buildpacks:set heroku/go
 ```
 
 3. Push code to Heroku servers. Make sure you have a `vendor/vendor.json`, otherwise Heroku will fail building.
-```
+``` bash
 git push heroku master
 ```
 
 4. Open Heroku app in browser.
-```
+``` bash
 heroku open
 ```
 Or go directly via http://APP_NAME.herokuapp.com
 
 5. View/stream server logs.
-```
+``` bash
 heroku logs --tail
 ```
 
@@ -155,12 +155,12 @@ heroku logs --tail
 1. Install Docker.
 
 2. Install the game server (this should also run the game server for you).
-```
+``` bash
 docker run -it -p 4000:4000 stembolt/battle_snake
 ```
 
 To stop/start the game server use:
-```
+``` bash
 docker start vibrant_kowalevski
 
 docker stop vibrant_kowalevski

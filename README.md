@@ -125,28 +125,28 @@ Example move request:
 
 ### Deploying to Heroku
 
-1. Create a new Go Heroku app using Go buildpack.
+1) Create a new Go Heroku app using Go buildpack.
 ``` bash
 heroku create [APP_NAME]
 ```
 
-2. Add a buildpack for Go.
+2) Add a buildpack for Go.
 ``` bash
 heroku buildpacks:set heroku/go
 ```
 
-3. Push code to Heroku servers. Make sure you have a `vendor/vendor.json`, otherwise Heroku will fail building.
+3) Push code to Heroku servers. Make sure you have a `vendor/vendor.json`, otherwise Heroku will fail building.
 ``` bash
 git push heroku master
 ```
 
-4. Open Heroku app in browser.
+4) Open Heroku app in browser.
 ``` bash
 heroku open
 ```
 Or go directly via http://APP_NAME.herokuapp.com
 
-5. View/stream server logs.
+5) View/stream server logs.
 ``` bash
 heroku logs --tail
 ```
@@ -154,9 +154,9 @@ heroku logs --tail
 
 ### Running Your Own Game Server (With Docker)
 
-1. Install Docker. For Ubuntu follow the instructions described here: https://docs.docker.com/engine/installation/linux/ubuntu/#install-docker/
+1) Install Docker. For Ubuntu follow the instructions described here: https://docs.docker.com/engine/installation/linux/ubuntu/#install-docker/
 
-2. Install the game server (this should also run the game server for you).
+2) Install the game server (this should also run the game server for you).
 ``` bash
 docker run -it -p 4000:4000 stembolt/battle_snake
 ```
@@ -169,10 +169,10 @@ docker stop vibrant_kowalevski
 ```
 Where `vibrant_kowalevski` is the name of my local game server.
 
-3. Visit http://localhost:4000
+3) Visit http://localhost:4000
 NOTE: Docker runs on a virtual LAN so when you add a snake to the game you cannot use `http://localhost:9000`, use your internal IP instead (also remove trailing `/`).
 
 
 ### Acknowledgments
 
-My code was forked from the [starter code provided by SendWithUs](https://github.com/sendwithus/battlesnake-go). Also, [SendWithUs](https://www.sendwithus.com/) and [Stembolt](https://stembolt.com/) have put much effort into a very awesome game server for the competition.
+My code was forked from the [starter code provided by SendWithUs](https://github.com/sendwithus/battlesnake-go). [SendWithUs](https://www.sendwithus.com/) and [Stembolt](https://stembolt.com/) have put much effort and created an awesome game server for the competition.

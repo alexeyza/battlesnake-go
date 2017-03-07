@@ -154,7 +154,7 @@ heroku logs --tail
 
 ### Running Your Own Game Server (With Docker)
 
-1. Install Docker.
+1. Install Docker. For Ubuntu follow the instructions described here: https://docs.docker.com/engine/installation/linux/ubuntu/#install-docker/
 
 2. Install the game server (this should also run the game server for you).
 ``` bash
